@@ -1345,52 +1345,11 @@
       if (getCart().length === 0) {
         alert("Your cart is empty!");
       } else {
-        window.location.href = "../homepage/checkout.html";
+        window.location.href = "../checkout.html";
       }
     }
 
     document.addEventListener("DOMContentLoaded", updateCartCount);
-
-    // ---------- Compare ----------
-    // let compareList = [];
-    // function toggleCompare(id, title, price, cat, img) {
-    //   const idx = compareList.findIndex(p => p.id === id);
-    //   if (idx > -1) compareList.splice(idx, 1);
-    //   else if (compareList.length < 4) compareList.push({ id, title, price, category: cat, img });
-    //   else { alert("Max 4 products"); return; }
-    //   document.getElementById('compareCount').textContent = compareList.length;
-    // }
-
-    // function showComparison() {
-    //   if (compareList.length < 2) { alert("Select at least 2 products"); return; }
-    //   let html = '<div class="d-flex gap-3 justify-content-center flex-wrap">';
-    //   compareList.forEach(p => {
-    //     html += `
-    //   <div class="card p-2 text-center" style="width:200px;background:#fff0f5;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-    //     <img src="${p.img}" class="card-img-top" style="height:100px;object-fit:cover;border-radius:12px;">
-    //     <h6 class="mt-2">${p.title}</h6>
-    //     <p>PKR ${p.price}</p>
-    //     <p class="text-muted">${p.category}</p>
-    //     <button class="btn btn-sm btn-danger" onclick="removeCompare('${p.id}')">Remove</button>
-    //   </div>`;
-    //   });
-    //   html += '</div>';
-    //   document.getElementById('compareModalBody').innerHTML = html;
-    //   new bootstrap.Modal(document.getElementById('compareModal')).show();
-    // }
-
-    // function removeCompare(id) {
-    //   compareList = compareList.filter(p => p.id !== id);
-    //   document.getElementById('compareCount').textContent = compareList.length;
-    //   const cb = document.getElementById(`compare-${id}`);
-    //   if (cb) cb.checked = false;
-    //   if (compareList.length < 2) {
-    //     bootstrap.Modal.getInstance(document.getElementById('compareModal')).hide();
-    //     alert("Please select at least 2 products to compare!");
-    //     return;
-    //   }
-    //   showComparison();
-    // }
 
     // ---------- URL Param Filter ----------
     const params = new URLSearchParams(window.location.search);
