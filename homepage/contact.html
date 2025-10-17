@@ -365,19 +365,19 @@
           </div>
 
           <!-- Middle -->
-            <div class="col-md-4 mb-3">
-              <h6 class="fw-bold mb-3">Quick Links</h6>
-              <ul class="list-unstyled">
-                <li><a href="index.html" class="text-white">Home</a></li>
-                <li><a href="gift.html" class="text-white">Gifts</a></li>
-                <li><a href="brands.html" class="text-white">Brands</a></li>
-                <li><a href="brandcomparison.html" class="text-white">Brands Comparison</a></li>
-                <li><a href="blog.html" class="text-white">Blog</a></li>
-                <li><a href="help.html" class="text-white">Help</a></li>
-                <li><a href="about.html" class="text-white">About</a></li>
-                <li><a href="contact.html" class="text-white">Contact</a></li>
-              </ul>
-            </div>
+          <div class="col-md-4 mb-3">
+            <h6 class="fw-bold mb-3">Quick Links</h6>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white">Home</a></li>
+              <li><a href="gift.html" class="text-white">Gifts</a></li>
+              <li><a href="brands.html" class="text-white">Brands</a></li>
+              <li><a href="brandcomparison.html" class="text-white">Brands Comparison</a></li>
+              <li><a href="blog.html" class="text-white">Blog</a></li>
+              <li><a href="help.html" class="text-white">Help</a></li>
+              <li><a href="about.html" class="text-white">About</a></li>
+              <li><a href="contact.html" class="text-white">Contact</a></li>
+            </ul>
+          </div>
 
 
 
@@ -424,12 +424,16 @@
 
     function updateCartCount() {
       const cnt = getCart().reduce((s, i) => s + i.qty, 0);
-      document.getElementById("cart-num").innerText = cnt;
+      const num = document.getElementById("cart-num");
+      if (num) num.innerText = cnt;
       renderCart();
     }
 
     function renderCart() {
-      let cartItemsDiv = document.getElementById("cart-items");
+      let cartItemsDiv = document.getElementById("cartItems");
+      let totalBox = document.getElementById("cartTotal");
+      if (!cartItemsDiv || !totalBox) return;
+
       let total = 0;
       const c = getCart();
       if (c.length === 0) {
@@ -438,10 +442,10 @@
         cartItemsDiv.innerHTML = "";
         c.forEach((item) => {
           total += item.price * item.qty;
-          cartItemsDiv.innerHTML += `<div class="cart-item">${item.title} x ${item.qty} - PKR ${item.price * item.qty}</div>`;
+          cartItemsDiv.innerHTML += `<div class="cart-item">${item.title} × ${item.qty} — PKR ${item.price * item.qty}</div>`;
         });
       }
-      document.getElementById("cart-total").innerText = total;
+      totalBox.innerText = total;
     }
 
     function clearCart() {
